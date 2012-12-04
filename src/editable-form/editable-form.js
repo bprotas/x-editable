@@ -247,6 +247,10 @@ Editableform is linked with one of input types, e.g. 'text' or 'select'.
                   };
                 }
 
+                if (this.options['sendpk'] !== 'undefined' && this.options.sendpk === false && params['pk']) {
+                  delete params['pk'];
+                }
+
                 //additional params
                 if(typeof this.options.params === 'function') {
                     $.extend(params, this.options.params.call(this, params));  
