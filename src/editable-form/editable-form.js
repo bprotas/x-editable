@@ -235,11 +235,17 @@ Editableform is linked with one of input types, e.g. 'text' or 'select'.
                 this.showLoading();
 
                 //standard params
-                params = {
-                    name: this.options.name || '',
-                    value: value,
-                    pk: pk 
-                };
+                if (this.options.valuefield) {
+                  params = {};
+                  params[this.options.valuefield] = value;
+                }
+                else {
+                  params = {
+                      name: this.options.name || '',
+                      value: value,
+                      pk: pk 
+                  };
+                }
 
                 //additional params
                 if(typeof this.options.params === 'function') {
